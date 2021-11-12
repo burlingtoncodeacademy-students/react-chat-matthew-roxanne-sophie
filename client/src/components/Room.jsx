@@ -6,7 +6,9 @@ import "../styles/main.css";
 /*-------------------------Function for Room */
 function Room() {
   // use URL to get room name
-  const roomName = window.location.pathname.split("/")[2];
+  const roomName = window.location.pathname.split("/")[3];
+  const roomNameCorrect = roomName.replace(/-/g, " ")
+  const username = window.location.pathname.split("/")[1]
 
   //setting up state variables
   const [messages, setMessages] = useState([]);
@@ -16,7 +18,6 @@ function Room() {
 
   //evt handler for form submission of new message
   const updateMsgField = (evt) => {
-    evt.preventDefault();
     //incrementing getMessages to re-fire the fetch
     setGetMessages(getMessages + 1);
   };
@@ -32,12 +33,11 @@ function Room() {
   }, [roomName, getMessages]);
 
   let submitPath = `/submit/${roomName.toLowerCase()}`;
-  let userName = "Matt Testing";
 
   return (
     // Room Name, form to enter their message, and a place where messages show up. Do we want to make a chatbox component to bring in??
     <>
-      <h1>{roomName}</h1>
+      <h1>{roomNameCorrect}</h1>
       {/* Hello, {username}! */}
       <div className="message-area">
         {messages.map(function (msg, index) {
@@ -58,9 +58,9 @@ function Room() {
       </div>
       <div class-name="submit-message">
         <h3>Submit a Message</h3>
-        <h4>You are signed in as {userName}</h4>
+        <h4>You are signed in as {username}</h4>
         <form method="POST" action={submitPath} onSubmit={updateMsgField}>
-          <input type="hidden" name="author" value={userName} />
+          <input type="hidden" name="author" value={username} />
           <label for="msg">Message:</label>
           <input type="text" name="msg" placeholder="Enter a message" />
           <input type="submit" value="Submit" />

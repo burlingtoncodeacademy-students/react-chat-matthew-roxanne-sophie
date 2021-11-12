@@ -29,7 +29,10 @@ function Homepage() {
       evt.preventDefault();
     }
   };
-
+  //setting up intermediate path's with the username state variable for each navlink
+  let navPathTikTok = `${username}/room/Tik-Tok-Dance-Crazes`;
+  let navPathMongoose = `${username}/room/Mongoose`;
+  let navPathUniversal = `${username}/room/Universal-Basic-Income`;
   return (
     // Static stuff like header, instructions, etc
     // Interactive stuff like username input and choose room
@@ -45,17 +48,19 @@ function Homepage() {
         />
         {/* <input type="submit" /> */}
       </form>
-      <p><i>What do you want to chat about today?</i></p>
+      <p>
+        <i>What do you want to chat about today?</i>
+      </p>
       <div className="chatNav">
-      <NavLink className="nav-link" to="/room/Tik-tok-dance-crazes" onClick={navLinkClick}>
-        TikTok Dance Crazes
-      </NavLink>
-      <NavLink to="/room/Mongoose" onClick={navLinkClick}>
-        Mongoose
-      </NavLink>
-      <NavLink to="/room/Universal-basic-income" onClick={navLinkClick}>
-      Universal Basic Income
-      </NavLink>
+        <NavLink className="nav-link" to={navPathTikTok} onClick={navLinkClick}>
+          TikTok Dance Crazes
+        </NavLink>
+        <NavLink to={navPathMongoose} onClick={navLinkClick}>
+          Mongoose
+        </NavLink>
+        <NavLink to={navPathUniversal} onClick={navLinkClick}>
+          Universal Basic Income
+        </NavLink>
       </div>
     </>
   );

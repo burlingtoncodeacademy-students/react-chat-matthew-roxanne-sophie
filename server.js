@@ -79,8 +79,8 @@ app.post("/submit/:room", async (req, res) => {
   //saving the newly created message to the database
   await newMessage.save();
 
-  //sending status code 204, keeps them on current page without reload
-  res.status(204).send('Success!');
+  //redirect back causes a page reload
+  res.redirect('back')
 });
 
 app.post("/username", (req, res) => {
