@@ -6,26 +6,85 @@ import "../styles/main.css";
 /*-------------------------Function for Room */
 function Room() {
   // use URL to get room name
-  console.log("window.location.pathname: ", window.location.pathname);
-  console.log(
-    "(window.location.pathname).split('/'): ",
-    window.location.pathname.split("/")
-  );
-  let roomName = window.location.pathname.split("/").slice(2);
+  const roomName = window.location.pathname.split("/")[2];
 
-  // fetch in useEffect to get username
-  useEffect( () => {
-      fetch(``)
+  //setting up state variables
+  const [messages, setMessages] = useState([]);
+  const [getMessages, setGetMessages] = useState(0);
+  // const [updateTimer, setUpdateTimer] = useState(0);
+  // setInterval(() => setUpdateTimer(updateTimer + 1), 10000)
 
-  }, [])
+  //evt handler for form submission of new message
+  const updateMsgField = (evt) => {
+    evt.preventDefault();
+    //incrementing getMessages to re-fire the fetch
+    setGetMessages(getMessages + 1);
+  };
+
+  useEffect(() => {
+    let correctedRoomName = roomName.toLowerCase();
+    fetch(`/allmessages/${correctedRoomName}`)
+      .then((res) => res.json())
+      .then((chatArray) => {
+        setMessages(chatArray);
+        console.log(chatArray);
+      });
+  }, [roomName, getMessages]);
+
+  let submitPath = `/submit/${roomName.toLowerCase()}`;
+  let userName = "Matt Testing";
 
   return (
-      // Room Name, form to enter their message, and a place where messages show up. Do we want to make a chatbox component to bring in??
+    // Room Name, form to enter their message, and a place where messages show up. Do we want to make a chatbox component to bring in??
     <>
       <h1>{roomName}</h1>
       {/* Hello, {username}! */}
+      <div className="message-area">
+        {messages.map(function (msg, index) {
+          if (index % 2 === 0) {
+            return (
+              <div className="even-message">
+                {msg.author} @ ({msg.date}): {msg.msg}
+              </div>
+            );
+          } else {
+            return (
+              <div className="odd-message">
+                {msg.author} @ ({msg.date}): {msg.msg}
+              </div>
+            );
+          }
+        })}
+      </div>
+      <div class-name="submit-message">
+        <h3>Submit a Message</h3>
+        <h4>You are signed in as {userName}</h4>
+        <form method="POST" action={submitPath} onSubmit={updateMsgField}>
+          <input type="hidden" name="author" value={userName} />
+          <label for="msg">Message:</label>
+          <input type="text" name="msg" placeholder="Enter a message" />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     </>
   );
 }
 
 export default Room;
+
+// .message-area {
+//   display: flex;
+//   width: 70vw;
+//   height: 10vh;
+//   border: 2px solid;
+//   overflow: auto;
+//   flex-direction: column;
+//   align-items: center;
+//   align-content: center;
+//   align-self: center;
+// }
+
+// .even-message {
+//   background-color: black;
+//   color: white;
+// }
