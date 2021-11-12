@@ -83,10 +83,17 @@ app.post("/submit/:room", async (req, res) => {
   res.status(204).send('Success!');
 });
 
+app.post("/username", (req, res) => {
+  res.redirect()
+})
+
 //routing * to handle any non-set routes to a 404 page
 app.get("*", (req, res) => {
   res.send(`<h3>404: Whoops, something went wrong...</h3>`);
 });
+
+
+
 
 //listening on port 5000 and console logging a message to ensure it is listening
 app.listen(port, () => console.log(`React Chat app listening port ${port}!`));
