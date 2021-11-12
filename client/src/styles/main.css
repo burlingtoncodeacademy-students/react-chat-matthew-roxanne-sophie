@@ -1,3 +1,68 @@
+/* Trying out some gradient background coloring and font style*/
+body {
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgb(106, 126, 228) 5%, rgba(70,252,196,1) 59%);
+    font-family: 'Share Tech Mono', monospace;
+
+}
+/* Styling for header*/
+.header {
+  margin-top: 5vw;
+  text-align: center;
+  color: rgb(0, 73, 230);
+  text-shadow:aquamarine 2px 2px 2px;
+  font-size: 75px;
+}
+/* Applies a line underneath header*/
+hr.roundedLine {
+  border-top: 1px solid aquamarine;
+  border-radius: 5px;
+  margin-right: 145px;
+  margin-left: 145px;
+}
+
+/* Styling for Instructions component */
+.instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 250px;
+  float: right;
+  margin-right: 10vw;
+  align-items: stretch
+}
+
+/* Styling for username text box*/
+.enterUserName {
+  text-align: center;
+  margin-top: 20vw;
+  margin-left: 25vw;
+  margin-right: 25vw;
+}
+
+
+/* Styling for text above chat-box navigation*/
+p {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Styling for chat-box navigation*/
+.chatNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 75px;
+  border: 2.5px solid black;
+  border-radius: 25px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 5vw;
+  height: 50px;
+  align-items: center;
+
+  
+}
 .nav-link:disabled {
-    color: gray;
+  color: gray;
 }
