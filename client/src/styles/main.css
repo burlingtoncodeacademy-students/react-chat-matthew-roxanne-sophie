@@ -1,16 +1,19 @@
 /* Trying out some gradient background coloring and font style*/
 body {
-    background: rgb(63,94,251);
-    background: radial-gradient(circle, rgb(106, 126, 228) 5%, rgba(70,252,196,1) 59%);
-    font-family: 'Share Tech Mono', monospace;
-
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgb(106, 126, 228) 5%,
+    rgba(70, 252, 196, 1) 59%
+  );
+  font-family: "Share Tech Mono", monospace;
 }
 /* Styling for header*/
 .header {
   margin-top: 5vw;
   text-align: center;
   color: rgb(0, 73, 230);
-  text-shadow:aquamarine 2px 2px 2px;
+  text-shadow: aquamarine 2px 2px 2px;
   font-size: 75px;
 }
 /* Applies a line underneath header*/
@@ -29,7 +32,7 @@ hr.roundedLine {
   width: 250px;
   float: right;
   margin-right: 10vw;
-  align-items: stretch
+  align-items: stretch;
 }
 
 /* Styling for username text box*/
@@ -39,7 +42,6 @@ hr.roundedLine {
   margin-left: 25vw;
   margin-right: 25vw;
 }
-
 
 /* Styling for text above chat-box navigation*/
 p {
@@ -60,9 +62,30 @@ p {
   margin-bottom: 5vw;
   height: 50px;
   align-items: center;
-
-  
 }
+
+/* Mobile responsiveness (at 800px, rows become columns*/
+@media (max-width: 800px) {
+  .chatNav {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Styling for buttons when not clickable*/
 .nav-link:disabled {
   color: gray;
+}
+/* */
+.message-area {
+  width: 70vw;
+  height: 10vh;
+  border: 2px solid;
+  overflow: auto;
+ 
+}
+
+.even-message {
+  background-color: black;
+  color: white;
 }

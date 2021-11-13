@@ -2,6 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "../styles/main.css";
+import NavBar from "./NavBar"
 
 /*-------------------------Function for Room */
 function Room() {
@@ -13,6 +14,8 @@ function Room() {
   //setting up state variables
   const [messages, setMessages] = useState([]);
   const [getMessages, setGetMessages] = useState(0);
+  const [currentRoom, setCurrentRoom] = useState(roomNameCorrect)
+  
   // const [updateTimer, setUpdateTimer] = useState(0);
   // setInterval(() => setUpdateTimer(updateTimer + 1), 10000)
 
@@ -66,25 +69,10 @@ function Room() {
           <input type="submit" value="Submit" />
         </form>
       </div>
+      <NavBar username={username} setCurrentRoom={setCurrentRoom} />
     </>
   );
 }
 
 export default Room;
 
-// .message-area {
-//   display: flex;
-//   width: 70vw;
-//   height: 10vh;
-//   border: 2px solid;
-//   overflow: auto;
-//   flex-direction: column;
-//   align-items: center;
-//   align-content: center;
-//   align-self: center;
-// }
-
-// .even-message {
-//   background-color: black;
-//   color: white;
-// }

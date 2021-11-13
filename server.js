@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const io = require('socket.io')
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -11,12 +12,17 @@ const staticDir = process.env.DEV ? "./client/public" : "./client/build";
 app.use(express.static(staticDir));
 app.use(express.urlencoded({ extended: true }));
 
+//-----------------------------SOCKET-IO-----------------------------------
+// io.on("connection", (socket) => {
+  
+// })
+
 //------------------------------MONGOOSE SETUP------------------------------
 //creating mongoose Schema for messages
 const MessageSchema = new mongoose.Schema({
   date: Date,
   author: String,
-  msg: String,
+  msg: String, 
   room: String,
 });
 
