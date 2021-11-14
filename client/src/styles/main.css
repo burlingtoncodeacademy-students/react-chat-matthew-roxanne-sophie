@@ -1,4 +1,4 @@
-/* Trying out some gradient background coloring and font style*/
+/* Trying out some gradient background coloring and font style */
 body {
   background: rgb(63, 94, 251);
   background: radial-gradient(
@@ -8,6 +8,7 @@ body {
   );
   font-family: "Share Tech Mono", monospace;
 }
+
 /* Styling for header*/
 .header {
   margin-top: 5vw;
@@ -16,6 +17,7 @@ body {
   text-shadow: aquamarine 2px 2px 2px;
   font-size: 75px;
 }
+
 /* Applies a line underneath header*/
 hr.roundedLine {
   border-top: 1px solid aquamarine;
@@ -35,7 +37,7 @@ hr.roundedLine {
   align-items: stretch;
 }
 
-/* Styling for username text box*/
+/* Placement for username form */
 .enterUserName {
   text-align: center;
   margin-top: 20vw;
@@ -43,13 +45,21 @@ hr.roundedLine {
   margin-right: 25vw;
 }
 
-/* Styling for text above chat-box navigation*/
+/* Styling for username textbox */
+.userInput {
+  width: 25vw;
+  background-color:rgb(183, 255, 233);
+  font-family: "Share Tech Mono", monospace;
+}
+
+/* Styling for text above chat-box navigation */
 p {
   text-align: center;
   margin-top: 50px;
+  font-weight: bold;
 }
 
-/* Styling for chat-box navigation*/
+/* Styling for chat-box navigation */
 .chatNav {
   display: flex;
   flex-direction: row;
@@ -62,9 +72,11 @@ p {
   margin-bottom: 5vw;
   height: 50px;
   align-items: center;
+  padding: 10px;
+  min-width: 250px;
 }
 
-/* Mobile responsiveness (at 800px, rows become columns*/
+/* Mobile responsiveness (at 800px, rows become columns */
 @media (max-width: 800px) {
   .chatNav {
     flex-direction: column;
@@ -72,14 +84,28 @@ p {
   }
 }
 
-/* Styling for buttons when not clickable*/
+/* Styling for buttons when not clickable -- doesn't work */
 .nav-link:disabled {
   color: gray;
 }
+
+/* Formatting for room page using flexbox */
+#room-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+/* Formatting for room page flex items */
+.room-item {
+  text-align: center;
+  margin: 20px;
+}
+
 /* */
 .message-area {
   width: 70vw;
-  height: 10vh;
+  height: 40vh;
   border: 2px solid;
   overflow: auto;
  
@@ -88,4 +114,14 @@ p {
 .even-message {
   background-color: black;
   color: white;
+}
+
+.submitButton {
+  font-family: "Share Tech Mono", monospace;
+  background-color: rgba(0, 0, 139, 0);
+  border: 2px solid black;
+}
+
+.submitButton:hover {
+  background-color: rgba(255, 255, 255, 0.185);
 }

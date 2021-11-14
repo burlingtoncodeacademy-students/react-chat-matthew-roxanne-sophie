@@ -30,7 +30,7 @@ function Homepage() {
       <Header />
       <Instructions />
       <form className="enterUserName">
-        <input
+        <input className="userInput"
           type="text"
           name="username"
           placeholder="Make a username"

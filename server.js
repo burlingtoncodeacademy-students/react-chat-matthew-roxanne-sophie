@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const io = require('socket.io')
+const socket_io = require('socket.io')
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -15,6 +15,28 @@ app.use(express.urlencoded({ extended: true }));
 //-----------------------------SOCKET-IO-----------------------------------
 // io.on("connection", (socket) => {
   
+// })
+// //create variable for socket-io
+// let io = socket_io()
+// //create intermediate variable to use .watch() method on Messages
+// const changeDatabase = Messages.watch()
+
+// changeDatabase.on('change', (change) => {
+//   console.log(change)
+//   io.emit('changeData', change)
+// })
+
+// io.on('connection', function () {
+//   console.log('connected socket io')
+//   window.location.reload()
+// })
+
+//method that watches messages model for any changes and will reload that page upon change
+// Messages.watch().on('change', data => window.location.reload())
+
+// const changeStream = Messages.watch()
+// changeStream.on('change', (evt) => {
+//   window.location.reload()
 // })
 
 //------------------------------MONGOOSE SETUP------------------------------
@@ -42,7 +64,11 @@ const database = mongoose.connection;
 const Messages = mongoose.model("all-messages", MessageSchema);
 
 //binds error message to the connection variable to print if an error occurs with database connection
-database.on("error", console.error.bind(console, "connection error"));
+// database.on("error", console.error.bind(console, "connection error"));
+
+// Messages.watch().on('change', async (evt) => {
+// await evt.redirect('back')
+// })
 
 //-------------------------------ROUTES----------------------------------------
 //NOTE: USERNAME IS SET ON HOMEPAGE AND PASSED AS PROP, THE RETURNED HTML SHOULD STILL HAVE A INPUT FIELD IN THE FORM WITH NAME=PROPS.USERNAME THAT IS NOT EDITABLE, TO ALLOW FOR REQ.BODY.USERNAME TO BE USED
@@ -53,7 +79,7 @@ app.get("/allmessages", async (req, res) => {
   //setting up intermediate variable to store find result
   let allMessages = await Messages.find({});
   //responding with a json of the find
-  res.json(allMessages);
+res.json(allMessages);
 });
 
 //API endpoint to get the messages from a specifc room
@@ -84,6 +110,7 @@ app.post("/submit/:room", async (req, res) => {
   });
   //saving the newly created message to the database
   await newMessage.save();
+
 
   //redirect back causes a page reload
   res.redirect('back')
