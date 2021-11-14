@@ -8,8 +8,10 @@ function NavBar(props) {
     //check for if the user has input any text into username
     if (props.linkDisabled === true) {
       evt.preventDefault();
+      alert("Please create a username before choosing a room!")
+    } else {
+      props.setCurrentRoom(evt.target.id);
     }
-    props.setCurrentRoom(evt.target.id)
   };
   //setting up intermediate path's with the username state variable for each navlink
   let navPathTikTok = `/${props.username}/room/Tik-Tok-Dance-Crazes`;
@@ -18,7 +20,12 @@ function NavBar(props) {
   return (
     <>
       <div className="chatNav">
-        <NavLink className="nav-link" id="TikTok" to={navPathTikTok} onClick={navLinkClick}>
+        <NavLink
+          className="nav-link"
+          id="TikTok"
+          to={navPathTikTok}
+          onClick={navLinkClick}
+        >
           TikTok Dance Crazes
         </NavLink>
         <NavLink to={navPathMongoose} id="Mongoose" onClick={navLinkClick}>

@@ -16,28 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 // io.on("connection", (socket) => {
   
 // })
-// //create variable for socket-io
-// let io = socket_io()
-// //create intermediate variable to use .watch() method on Messages
-// const changeDatabase = Messages.watch()
-
-// changeDatabase.on('change', (change) => {
-//   console.log(change)
-//   io.emit('changeData', change)
-// })
-
-// io.on('connection', function () {
-//   console.log('connected socket io')
-//   window.location.reload()
-// })
-
-//method that watches messages model for any changes and will reload that page upon change
-// Messages.watch().on('change', data => window.location.reload())
-
-// const changeStream = Messages.watch()
-// changeStream.on('change', (evt) => {
-//   window.location.reload()
-// })
 
 //------------------------------MONGOOSE SETUP------------------------------
 //creating mongoose Schema for messages
@@ -64,7 +42,7 @@ const database = mongoose.connection;
 const Messages = mongoose.model("all-messages", MessageSchema);
 
 //binds error message to the connection variable to print if an error occurs with database connection
-// database.on("error", console.error.bind(console, "connection error"));
+database.on("error", console.error.bind(console, "connection error"));
 
 // Messages.watch().on('change', async (evt) => {
 // await evt.redirect('back')
@@ -111,22 +89,14 @@ app.post("/submit/:room", async (req, res) => {
   //saving the newly created message to the database
   await newMessage.save();
 
-
   //redirect back causes a page reload
   res.redirect('back')
 });
-
-app.post("/username", (req, res) => {
-  res.redirect()
-})
 
 //routing * to handle any non-set routes to a 404 page
 app.get("*", (req, res) => {
   res.send(`<h3>404: Whoops, something went wrong...</h3>`);
 });
-
-
-
 
 //listening on port 5000 and console logging a message to ensure it is listening
 app.listen(port, () => console.log(`React Chat app listening port ${port}!`));
