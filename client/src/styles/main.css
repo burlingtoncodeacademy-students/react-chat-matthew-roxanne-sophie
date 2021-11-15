@@ -1,0 +1,141 @@
+/* Trying out some gradient background coloring and font style */
+body {
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgb(106, 126, 228) 5%,
+    rgba(70, 252, 196, 1) 59%
+  );
+  font-family: "Share Tech Mono", monospace;
+}
+
+/* Styling for header */
+.header {
+  margin-top: 5vw;
+  text-align: center;
+  color: rgb(0, 73, 230);
+  text-shadow: aquamarine 2px 2px 2px;
+  font-size: 75px;
+}
+
+/* Creating flexbox for home page */
+#home-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* For homepage flexbox items */
+.home-item {
+  margin: 15px;
+}
+
+/* Applies a line underneath header*/
+hr.roundedLine {
+  border-top: 1px solid aquamarine;
+  border-radius: 5px;
+  margin-right: 145px;
+  margin-left: 145px;
+}
+
+/* Styling for Instructions component */
+.instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 250px;
+  float: right;
+  margin-left: 30px;
+  align-items: stretch;
+}
+
+/* Placement for username form */
+.enterUserName {
+  text-align: center;
+  margin: 20px;
+  /* margin-left: 25vw;
+  margin-right: 25vw; */
+}
+
+/* Styling for username textbox */
+.userInput {
+  width: 25vw;
+  background-color:rgb(183, 255, 233);
+  font-family: "Share Tech Mono", monospace;
+}
+
+/* Styling for text above chat-box navigation */
+p {
+  text-align: center;
+  /* margin-top: 50px; */
+  font-weight: bold;
+}
+
+/* Styling for chat-box navigation */
+.chatNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 75px;
+  border: 2.5px solid black;
+  border-radius: 25px;
+  margin-left: 200px;
+  margin-right: 200px;
+  /* margin-bottom: 5vw; */
+  height: 50px;
+  align-items: center;
+  padding: 10px;
+  min-width: 250px;
+}
+
+/* Mobile responsiveness (at 800px, rows become columns */
+@media (max-width: 800px) {
+  .chatNav {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Styling for buttons when not clickable -- doesn't work */
+.nav-link:disabled {
+  color: gray;
+}
+
+/* Formatting for room page using flexbox */
+#room-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+/* Formatting for room page flex items */
+.room-item {
+  text-align: center;
+  margin: 15px;
+}
+
+/* Styling for chat display with scroll */
+.message-area {
+  width: 70vw;
+  height: 40vh;
+  border: 2px solid;
+  overflow: auto;
+ 
+}
+/* Styling to distinguish every other message */
+.even-message {
+  background-color: black;
+  color: white;
+}
+
+/* Styling submit buttom on chatroom page*/
+.submitButton {
+  font-family: "Share Tech Mono", monospace;
+  background-color: rgba(0, 0, 139, 0);
+  border: 2px solid black;
+}
+
+/* change color of submit button on cursor hover*/
+.submitButton:hover {
+  background-color: rgba(255, 255, 255, 0.185);
+}
