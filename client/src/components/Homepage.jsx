@@ -22,6 +22,11 @@ function Homepage() {
     setLinkDisabled(false);
   };
 
+  //evt handler for preventing the user from hitting the enter key to submit their username, this was causing the username query to be entered into the url path and not actually enabling the links
+  const preventSubmit = (evt) => {
+    evt.preventDefault()
+  }
+
   return (
     // Static stuff like header, instructions, etc
     // Interactive stuff like username input and choose room
@@ -36,7 +41,7 @@ function Homepage() {
       </div>
       <div>
         {/* Form for creating a username */}
-      <form className="enterUserName">
+      <form className="enterUserName" onSubmit={preventSubmit}>
         <input className="userInput"
           type="text"
           name="username"

@@ -7,8 +7,10 @@ import Room from "./components/Room.jsx";
 function App() {
   return (
     <div className="App">
+      {/* Setting up browser router from react-router-dom */}
       <BrowserRouter>
         <Routes>
+          {/* Setting up two routes, one for homepage, and another to function for any room (using :roomId) and username (:username) */}
           <Route path="/" element={<Homepage />} />
           <Route path="/:username/room/:roomId" element={<Room />} />
         </Routes>
