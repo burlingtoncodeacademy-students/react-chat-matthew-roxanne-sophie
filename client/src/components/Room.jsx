@@ -16,21 +16,6 @@ function Room() {
   const [messages, setMessages] = useState([]);
   const [currentRoom, setCurrentRoom] = useState(roomNameCorrect);
 
-  // const socket = io("http://localhost:8000");
-  // socket.on("connect", () => {
-  //   console.log(`You connected with id: ${socket.id}`);
-  // });
-
-  // socket.on("receive-message", (message) => {
-  //   let correctedRoomName = roomName.toLowerCase();
-  //   fetch(`/allmessages/${correctedRoomName}`)
-  //     .then((res) => res.json())
-  //     .then((chatArray) => {
-  //       setMessages(chatArray);
-  //       console.log(chatArray);
-  //     });
-  // });
-
   //useEffect attempt to limit socket.io firing multiple times. This works on multiple fires on the front end, but still firing x4 on the server side.
   const socket = io("http://localhost:8000");
   useEffect(() => {

@@ -17,20 +17,6 @@ app.use(express.static(staticDir));
 app.use(express.urlencoded({ extended: true }));
 
 //-----------------------------SOCKET-IO-----------------------------------
-// const http = require("http").Server(app);
-// const io = require("socket.io")(http, {
-//   cors: {
-//     origin: ["http://localhost:3000"],
-//   },
-// });
-
-// io.on("connection", (socket) => {
-//   console.log(socket.id);
-//   socket.on("send-message", (message) => {
-//     io.broadcast.emit("receive-message", message);
-//     console.log(message);
-//   });
-// });
 
 //using .on connection for the websockets
 io.on("connection", (socket) => {
